@@ -9,7 +9,7 @@
   (:gen-class))
 
 (defn -main
-  "I don't do a whole lot ... yet ... and I probably never will."
+  "Runs the IRC bot"
   [& args]
   (let [
     host (parse-host config-file)
