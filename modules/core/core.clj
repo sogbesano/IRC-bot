@@ -15,14 +15,4 @@
   (let [jp-hiragana-itadakimasu "\u3044\u305F\u3060\u304D\u307E\u3059!"]
   (new-privmsg-cmd "#sett" jp-hiragana-itadakimasu)))
 
-(defn golem
-  "rjp golem - if rx-irc-msg contains? girls are/r dumb then change NICK to the_real_golem and send 'actually, i think intellect is more a product of socialisation and age rather than gender' then change NICK back to narkoman"
-  []
-  )
-
-(defn fart
-  "probabilistic jp fart onomatopoeia"
-  []
-  )
-
 (def module-name-and-cmds {:module-name "core" :caw caw :botsnack botsnack})
