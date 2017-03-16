@@ -1,5 +1,5 @@
 (ns modules.core.core
-  (:require [irc-command.command :refer [new-privmsg-cmd]])
+  (:require [irc-command.command :refer [new-privmsg-cmd, new-irc-cmd]])
   (:require [clojure.string :refer [join, replace, includes?]])
   (:require [irc-bot.core :refer [loaded-modules]])
   (:require [module-command.command :refer [get-loaded-modules-keys]])
@@ -72,7 +72,7 @@
 (defn quit
   "QUIT cmd disconnects the IRC bot from the IRC server"
   []
-  (new-privmsg-cmd "" "QUIT")
+  (new-irc-cmd nil nil nil nil "QUIT" ["#beepboop"] "  ")
 )
 (def module-name-and-cmds 
   {
