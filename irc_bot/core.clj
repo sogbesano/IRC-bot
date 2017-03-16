@@ -15,12 +15,12 @@
   [& args]
   (let 
     [
-    host (parse-host config-file)
-    port (parse-port config-file)
-    nick (parse-nick config-file)
-    username (parse-username config-file)
-    channel (parse-channel config-file)
-    sock (create-irc-socket host port)
+      host (parse-host config-file)
+      port (parse-port config-file)
+      nick (parse-nick config-file)
+      username (parse-username config-file)
+      channel (parse-channel config-file)
+      sock (create-irc-socket host port)
     ]
     (init-connection sock nick username channel)
     (println (format "LOADED MODULES: %s" (vec (map (fn [module] (:module-name module)) loaded-modules))))
