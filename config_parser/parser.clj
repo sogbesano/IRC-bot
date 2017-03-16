@@ -7,24 +7,29 @@
 (defn parse-host
   "Parses the host from the network configurations of config.clj"
   [config]
-  (:host (:network config)))
+  (:host (:network config))
+)
 
 (defn parse-port
   "Parses the port from the network configurations of config.clj"
   [config]
-  (:port (:network config)))
+  (:port (:network config))
+)
 
 (defn parse-nick
   "Parses the nick from the irc configurations of config.clj"
   [config]
-  (:nick (:irc config)))
+  (:nick (:irc config))
+)
 
 (defn parse-username
   "Parses the username from the irc configurations of config.clj"
   [config]
-  (:username (:irc config)))
+  (:username (:irc config))
+)
 
 (defn parse-channel
   "Parses the channel from the irc configurations of config.clj"
   [config]
-  (:channel (:irc config)))
+  (:channel (:irc config))
+)

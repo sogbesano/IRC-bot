@@ -41,7 +41,7 @@
             ]
             (if (module-cmd? module-cmd loaded-modules)
               (send-irc-cmd sock (invoke-module-cmd module-cmd module-cmd-args loaded-modules))
-              (println (format "%s, is not a valid module command" module-cmd))
+              (println (format "%s, is not a valid module command." module-cmd))
             )
           )
         )
