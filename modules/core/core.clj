@@ -50,9 +50,9 @@
         module-cmd-name-hyphen-rmd (replace module-cmd-name #"-" "")
         loaded-module-cmd? (includes? all-loaded-module-cmds module-cmd-name-hyphen-rmd)
       ]
-        (if loaded-module-cmd?
-          "" ;;get module command help description
-          (new-privmsg-cmd "#beepboop" (format "%s is not a valid loaded module command" module-cmd-name-hyphen-rmd))))))
+      (if loaded-module-cmd?
+        "" ;;get module command help description
+        (new-privmsg-cmd "#beepboop" (format "%s is not a valid loaded module command" module-cmd-name-hyphen-rmd))))))
   
 (def module-name-and-cmds {
                            :module-name "core" 
