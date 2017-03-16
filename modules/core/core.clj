@@ -68,7 +68,12 @@
     )
   )
 )
-  
+
+(defn quit
+  "QUIT cmd disconnects the IRC bot from the IRC server"
+  []
+  (new-privmsg-cmd "" "QUIT")
+)
 (def module-name-and-cmds 
   {
     :module-name "core" 
@@ -76,5 +81,6 @@
     :botsnack botsnack 
     :ls-cmds ls-cmds
     :cmd-help cmd-help
+    :quit quit
   }
 )

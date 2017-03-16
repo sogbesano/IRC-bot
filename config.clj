@@ -1,6 +1,6 @@
 (def config
   {:network {:host "jfc.im" :port 6667}
-   :irc {:nick "osan" :username "osan" :channel "#beepboop"}
+   :irc {:nick "sano" :username "sano" :channel "#beepboop"}
    :modules ["core"]
   }
 )
