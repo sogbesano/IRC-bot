@@ -26,20 +26,21 @@
     (println (format "LOADED MODULES: %s" (vec (map (fn [module] (:module-name module)) loaded-modules))))
     (while true 
       (let 
-        [rx-irc-cmd (read-irc-cmd sock) 
-         parsed-rx-irc-cmd (parse-irc-cmd rx-irc-cmd)
-         final-arg (:final-arg parsed-rx-irc-cmd)
-         module-prompt "%"]
+        [
+          rx-irc-cmd (read-irc-cmd sock) 
+          parsed-rx-irc-cmd (parse-irc-cmd rx-irc-cmd)
+          final-arg (:final-arg parsed-rx-irc-cmd)
+          module-prompt "%"
+        ]
         (println (format "PARSED RX IRC CMD: %s" parsed-rx-irc-cmd))
         (if (starts-with-module-prompt? final-arg module-prompt)
           (let [
                  module-cmd (:cmd-name (parse-module-cmd final-arg))
                  module-cmd-args (:cmd-args (parse-module-cmd final-arg))
                ]
-            (println (format "MODULE-CMD: %s" module-cmd)) 
-           (if (module-cmd? module-cmd loaded-modules)
-             (send-irc-cmd sock (invoke-module-cmd module-cmd module-cmd-args loaded-modules))
-             (println (format "%s, is not a valid module command" module-cmd))))))))
+            (if (module-cmd? module-cmd loaded-modules)
+              (send-irc-cmd sock (invoke-module-cmd module-cmd module-cmd-args loaded-modules))
+              (println (format "%s, is not a valid module command" module-cmd))))))))
   )
 
 
