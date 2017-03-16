@@ -6,7 +6,8 @@
   (:require [module-command-parser.parser :refer [parse-module-cmd]])
   (:require [module-command.command :refer [module-cmd?, invoke-module-cmd]])
   (:require [config-parser.parser :refer [config-file, parse-host, parse-port, parse-nick, parse-username, parse-channel]])
-  (:gen-class))
+  (:gen-class)
+)
 
 (def loaded-modules (vec (map load-module ["core"])))
 
