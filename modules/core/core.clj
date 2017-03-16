@@ -18,7 +18,7 @@
   (new-privmsg-cmd "#sett" jp-hiragana-itadakimasu)))
 
 (defn ls-cmds
-  "LS-CMDS cmd yields a PRIVMSG where the final arg is formatted output of module commands for all loaded modules"
+  "LS-CMDS cmd yields a PRIVMSG where the final arg is formatted output of all module commands for all loaded modules"
   []
   (let 
     [
