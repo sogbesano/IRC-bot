@@ -18,7 +18,7 @@
   (new-privmsg-cmd "#sett" jp-hiragana-itadakimasu)))
 
 (defn ls-cmds
-  "LS-CMDS cmd yields a PRIVMSG where the final arg is formatted output of module-name-and-cmds for all loaded modules"
+  "LS-CMDS cmd yields a PRIVMSG where the final arg is formatted output of module commands for all loaded modules"
   []
   (let 
     [
@@ -27,5 +27,7 @@
      all-module-cmds-fmtd (format "[%s]" all-module-cmds-comma-seperated)
     ]
     (new-privmsg-cmd "#sett" all-module-cmds-fmtd)))
+
+
   
 (def module-name-and-cmds {:module-name "core" :caw caw :botsnack botsnack :ls-cmds ls-cmds})
