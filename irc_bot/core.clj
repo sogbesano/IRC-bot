@@ -8,17 +8,20 @@
   (:require [config-parser.parser :refer [config-file, parse-host, parse-port, parse-nick, parse-username, parse-channel]])
   (:gen-class))
 
+(def loaded-modules (vec (map load-module ["core"])))
+
 (defn -main
   "Runs the IRC bot"
   [& args]
-  (let [
+  (let 
+    [
     host (parse-host config-file)
     port (parse-port config-file)
     nick (parse-nick config-file)
     username (parse-username config-file)
     channel (parse-channel config-file)
     sock (create-irc-socket host port)
-    loaded-modules [(load-module "core")]]
+    ]
     (init-connection sock nick username channel)
     (println (format "LOADED MODULES: %s" (vec (map (fn [module] (:module-name module)) loaded-modules))))
     (while true 
@@ -27,7 +30,7 @@
          parsed-rx-irc-cmd (parse-irc-cmd rx-irc-cmd)
          final-arg (:final-arg parsed-rx-irc-cmd)
          module-prompt "%"]
-        (println (format "PARSED IRC CMD: %s" parsed-rx-irc-cmd))
+        (println (format "PARSED RX IRC CMD: %s" parsed-rx-irc-cmd))
         (if (starts-with-module-prompt? final-arg module-prompt)
           (let [module-cmd (:cmd-name (parse-module-cmd final-arg))]
            (if (module-cmd? module-cmd loaded-modules)
