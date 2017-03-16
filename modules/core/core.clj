@@ -3,7 +3,7 @@
   (:require [clojure.string :refer [join, replace, includes?]])
   (:require [irc-bot.core :refer [loaded-modules]])
   (:require [module-command.command :refer [get-loaded-modules-keys]])
-  (:require [config-parser.parse :refer [parse-channel, config-file])
+  (:require [config-parser.parser :refer [parse-channel, config-file]])
   (:gen-class)
 )
 
