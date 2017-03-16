@@ -82,7 +82,7 @@
     [
       channel (parse-channel config-file)
     ]
-    (new-irc-cmd nil nil nil nil "QUIT" ["#beepboop"] "  ")
+    (new-irc-cmd nil nil nil nil "QUIT" [channel] "  ")
   )
 )
 
