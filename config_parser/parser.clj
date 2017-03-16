@@ -1,6 +1,7 @@
 (ns config-parser.parser
   (:require [clojure.java.io :refer [file]])
-  (:gen-class))
+  (:gen-class)
+)
 
 (def config-file (var-get (load-file (format "%s/src/%s" (.getCanonicalPath (file ".")) "config.clj")))) 
 
