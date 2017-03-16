@@ -2,7 +2,7 @@
   (:gen-class))
 
 (defn get-loaded-modules-keys
-  "Returns all the module keys in loaded modules"
+  "Returns all the module keys in loaded modules except :module-name"
   [loaded-modules]
   (let [all-modules (vec (map (fn [module] (keys module)) loaded-modules))]
     (vec (for [module all-modules module-key (remove (fn [mod-key] (= mod-key :module-name)) module)] module-key))))

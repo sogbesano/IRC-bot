@@ -28,6 +28,9 @@
     ]
     (new-privmsg-cmd "#sett" all-module-cmds-fmtd)))
 
-
+(defn help
+  "HELP cmd yields a PRIVMSG where the final arg is formatted output of a description of the supplied module command"
+  [module-cmd-name]
+  )
   
 (def module-name-and-cmds {:module-name "core" :caw caw :botsnack botsnack :ls-cmds ls-cmds})
