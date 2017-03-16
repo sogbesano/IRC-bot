@@ -35,12 +35,13 @@
 
 (defn cmd-help
   "CMD-HELP cmd yields a PRIVMSG where the final arg is formatted output of a description of the supplied module command"
-  ([] (let
-         [
-            cmd-help-msg "cmd-help requires one argument, the module command name. Example usage: %cmd-help -botsnack. 
+  ([] 
+    (let
+      [
+        cmd-help-msg "cmd-help requires one argument, the module command name. Example usage: %cmd-help -botsnack. 
                          Use module command ls-cmds to see a list of available module commands."
-         ] 
-         (new-privmsg-cmd "#beepboop" cmd-help-msg)))
+      ] 
+      (new-privmsg-cmd "#beepboop" cmd-help-msg)))
 
   ([module-cmd-name]
     (let
