@@ -3,6 +3,7 @@
   (:require [clojure.string :refer [join, replace, includes?]])
   (:require [irc-bot.core :refer [loaded-modules]])
   (:require [module-command.command :refer [get-loaded-modules-keys]])
+  (:require [config-parser.parse :refer [parse-channel, config-file])
   (:gen-class)
 )
 
@@ -13,8 +14,9 @@
     [
       rng (rand-int 50) 
       jp-kana-crow-onomatopoeia (join " " (repeat (max 2 rng) "\u304B\u30FC!"))
+      channel (parse-channel config-file) 
     ] 
-    (new-privmsg-cmd "#beepboop" jp-kana-crow-onomatopoeia)
+    (new-privmsg-cmd channel jp-kana-crow-onomatopoeia)
   )
 )
 
@@ -24,8 +26,9 @@
   (let 
     [
       jp-hiragana-itadakimasu "\u3044\u305F\u3060\u304D\u307E\u3059!"
+      channel (parse-channel config-file)
     ]
-    (new-privmsg-cmd "#beepboop" jp-hiragana-itadakimasu)
+    (new-privmsg-cmd channel jp-hiragana-itadakimasu)
   )
 )
 
@@ -37,8 +40,9 @@
       all-loaded-module-cmds (get-loaded-modules-keys loaded-modules)
       all-module-cmds-comma-seperated (replace (join ", " all-loaded-module-cmds) #":" "")
       all-module-cmds-fmtd (format "[%s]" all-module-cmds-comma-seperated)
+      channel (parse-channel config-file)
     ]
-    (new-privmsg-cmd "#beepboop" all-module-cmds-fmtd)
+    (new-privmsg-cmd channel all-module-cmds-fmtd)
   )
 )
 
@@ -49,8 +53,9 @@
       [
         cmd-help-msg "cmd-help requires one argument, the module command name. Example usage: %cmd-help -botsnack. 
                          Use module command ls-cmds to see a list of available module commands."
+        channel (parse-channel config-file)
       ] 
-      (new-privmsg-cmd "#beepboop" cmd-help-msg)
+      (new-privmsg-cmd channel cmd-help-msg)
     )
   )
 
@@ -60,10 +65,11 @@
         all-loaded-module-cmds (join " " (get-loaded-modules-keys loaded-modules))
         module-cmd-name-hyphen-rmd (replace module-cmd-name #"-" "")
         loaded-module-cmd? (includes? all-loaded-module-cmds module-cmd-name-hyphen-rmd)
+        channel (parse-channel config-file)
       ]
       (if loaded-module-cmd?
         "" ;;get module command help description
-        (new-privmsg-cmd "#beepboop" (format "%s is not a valid loaded module command." module-cmd-name-hyphen-rmd))
+        (new-privmsg-cmd channel (format "%s is not a valid loaded module command." module-cmd-name-hyphen-rmd))
       )
     )
   )
@@ -72,8 +78,14 @@
 (defn quit
   "QUIT cmd disconnects the IRC bot from the IRC server"
   []
-  (new-irc-cmd nil nil nil nil "QUIT" ["#beepboop"] "  ")
+  (let 
+    [
+      channel (parse-channel config-file)
+    ]
+    (new-irc-cmd nil nil nil nil "QUIT" ["#beepboop"] "  ")
+  )
 )
+
 (def module-name-and-cmds 
   {
     :module-name "core" 
