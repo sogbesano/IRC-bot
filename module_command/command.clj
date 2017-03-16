@@ -27,7 +27,6 @@
   "Invokes the module command"
   [module-cmd-name, module-cmd-args, loaded-modules]
   (let [module-cmd ((keyword module-cmd-name) (get-module-cmd module-cmd-name loaded-modules))]
-    (println (format "MODULE-CMD-ARGS: %s" module-cmd-args))
     (apply module-cmd module-cmd-args)))
 
 
