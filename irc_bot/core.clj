@@ -34,10 +34,11 @@
         ]
         (println (format "PARSED RX IRC CMD: %s" parsed-rx-irc-cmd))
         (if (starts-with-module-prompt? final-arg module-prompt)
-          (let [
-                 module-cmd (:cmd-name (parse-module-cmd final-arg))
-                 module-cmd-args (:cmd-args (parse-module-cmd final-arg))
-               ]
+          (let 
+            [
+               module-cmd (:cmd-name (parse-module-cmd final-arg))
+               module-cmd-args (:cmd-args (parse-module-cmd final-arg))
+            ]
             (if (module-cmd? module-cmd loaded-modules)
               (send-irc-cmd sock (invoke-module-cmd module-cmd module-cmd-args loaded-modules))
               (println (format "%s, is not a valid module command" module-cmd))))))))
