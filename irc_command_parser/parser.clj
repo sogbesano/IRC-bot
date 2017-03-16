@@ -64,7 +64,8 @@
   [rx-irc-cmd]
   (let 
     [
-      cmd-matcher (re-matcher #"(\s+)\w+|\d+(\s+)" rx-irc-cmd) cmd-args-matcher (re-matcher #" :(.+)" rx-irc-cmd)
+      cmd-matcher (re-matcher #"(\s+)\w+|\d+(\s+)" rx-irc-cmd) 
+      cmd-args-matcher (re-matcher #" :(.+)" rx-irc-cmd)
     ]
     (.find cmd-matcher);;move matcher to cmd
     (if (.find cmd-args-matcher)
