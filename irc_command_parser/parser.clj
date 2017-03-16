@@ -33,7 +33,10 @@
   [rx-irc-cmd]
   (let 
     [
-      host-and-tail (if (re-find #"@(\w+)" rx-irc-cmd) (subs rx-irc-cmd (+ (index-of rx-irc-cmd "@") 1)) " ")
+      host-and-tail (if (re-find #"@(\w+)" rx-irc-cmd) 
+                      (subs rx-irc-cmd (+ (index-of rx-irc-cmd "@") 1)) 
+                      " "
+                    )
     ]
     (if (includes? host-and-tail " ") 
       (subs host-and-tail 0 (index-of host-and-tail " ")) 
