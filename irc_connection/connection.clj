@@ -15,7 +15,8 @@
   [socket, irc-cmd]
   (if (seq? irc-cmd) 
     (doseq [cmd irc-cmd] (write-to socket (fmt-for-tx cmd))) 
-    (write-to socket (fmt-for-tx irc-cmd)))
+    (write-to socket (fmt-for-tx irc-cmd))
+  )
 ) 
 
 (defn read-irc-cmd
@@ -27,8 +28,14 @@
 (defn init-connection
   "Sends initial IRC commands: NICK, USER and JOIN to the IRC server via a connected socket"
   [socket, nick, username, channel]
-  (let [nick-cmd (new-nick-cmd nick) user-cmd (new-user-cmd username) join-cmd (new-join-cmd channel)]
-    (send-irc-cmd socket (lazy-seq [nick-cmd user-cmd join-cmd])))
+  (let 
+    [
+      nick-cmd (new-nick-cmd nick) 
+      user-cmd (new-user-cmd username) 
+      join-cmd (new-join-cmd channel)
+    ]
+    (send-irc-cmd socket (lazy-seq [nick-cmd user-cmd join-cmd]))
+  )
 ) 
 
 
