@@ -13,7 +13,7 @@
                                             parse-nick, 
                                             parse-username, 
                                             parse-channel, 
-                                            parse-module-prompt
+                                            parse-module-cmd-prompt
                                           ]
             ]
   )
@@ -46,7 +46,7 @@
             rx-irc-cmd (read-irc-cmd sock) 
             parsed-rx-irc-cmd (parse-irc-cmd rx-irc-cmd)
             final-arg (:final-arg parsed-rx-irc-cmd)
-            module-prompt (parse-module-prompt config-file)
+            module-prompt (parse-module-cmd-prompt config-file)
           ]
           (println parsed-rx-irc-cmd)
           (if (starts-with-module-prompt? final-arg module-prompt)
