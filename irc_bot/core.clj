@@ -41,12 +41,12 @@
           (if (starts-with-module-prompt? final-arg module-prompt)
             (let 
               [
-                module-cmd (:cmd-name (parse-module-cmd final-arg))
+                module-cmd-name (:cmd-name (parse-module-cmd final-arg))
                 module-cmd-args (:cmd-args (parse-module-cmd final-arg))
               ]
-              (if (module-cmd? module-cmd loaded-modules)
-                (send-irc-cmd sock (invoke-module-cmd module-cmd module-cmd-args loaded-modules))
-                (println (format "%s, is not a valid module command." module-cmd))
+              (if (module-cmd? module-cmd-name loaded-modules)
+                (send-irc-cmd sock (invoke-module-cmd module-cmd-name module-cmd-args loaded-modules))
+                (println (format "%s, is not a valid module command." module-cmd-name))
               )
             )
           )
