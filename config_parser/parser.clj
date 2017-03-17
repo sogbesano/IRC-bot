@@ -34,3 +34,8 @@
   [config]
   (:channel (:irc config))
 )
+
+(defn parse-module-prompt
+  [config]
+  (:module-prompt config)
+)

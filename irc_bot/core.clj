@@ -5,7 +5,18 @@
   (:require [modules.utils :refer [starts-with-module-prompt?]])
   (:require [module-command-parser.parser :refer [parse-module-cmd]])
   (:require [module-command.command :refer [module-cmd?, invoke-module-cmd]])
-  (:require [config-parser.parser :refer [config-file, parse-host, parse-port, parse-nick, parse-username, parse-channel]])
+  (:require [
+              config-parser.parser :refer [
+                                            config-file, 
+                                            parse-host, 
+                                            parse-port, 
+                                            parse-nick, 
+                                            parse-username, 
+                                            parse-channel, 
+                                            parse-module-prompt
+                                          ]
+            ]
+  )
   (:gen-class)
 )
 
@@ -35,7 +46,7 @@
             rx-irc-cmd (read-irc-cmd sock) 
             parsed-rx-irc-cmd (parse-irc-cmd rx-irc-cmd)
             final-arg (:final-arg parsed-rx-irc-cmd)
-            module-prompt "%"
+            module-prompt (parse-module-prompt config-file)
           ]
           (println parsed-rx-irc-cmd)
           (if (starts-with-module-prompt? final-arg module-prompt)
