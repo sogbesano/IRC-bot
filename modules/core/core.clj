@@ -51,8 +51,7 @@
   ([] 
     (let
       [
-        cmd-help-msg "cmd-help requires one argument, the module command name. Example usage: %cmd-help -botsnack. 
-                         Use module command ls-cmds to see a list of available module commands."
+        cmd-help-msg "cmd-help requires one argument, the module command name. Example usage: %cmd-help -botsnack. Use module command ls-cmds to see a list of available module commands."
         channel (parse-channel config-file)
       ] 
       (new-privmsg-cmd channel cmd-help-msg)
