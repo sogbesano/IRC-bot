@@ -47,7 +47,7 @@
 )
 
 (defn cmd-help
-  "CMD-HELP cmd yields a PRIVMSG where the final arg is formatted output of a description of the supplied module command"
+  "CMD-HELP cmd yields a PRIVMSG where the final arg is formatted output of a description of the supplied module command name"
   ([] 
     (let
       [
