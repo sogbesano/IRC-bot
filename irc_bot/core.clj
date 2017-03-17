@@ -46,10 +46,10 @@
             rx-irc-cmd (read-irc-cmd sock) 
             parsed-rx-irc-cmd (parse-irc-cmd rx-irc-cmd)
             final-arg (:final-arg parsed-rx-irc-cmd)
-            module-prompt (parse-module-cmd-prompt config-file)
+            module-cmd-prompt (parse-module-cmd-prompt config-file)
           ]
           (println parsed-rx-irc-cmd)
-          (if (starts-with-module-prompt? final-arg module-prompt)
+          (if (starts-with-module-prompt? final-arg module-cmd-prompt)
             (let 
               [
                 module-cmd-name (:cmd-name (parse-module-cmd final-arg))
