@@ -37,7 +37,7 @@
             final-arg (:final-arg parsed-rx-irc-cmd)
             module-prompt "%"
           ]
-          (println (format "PARSED RX IRC CMD: %s" parsed-rx-irc-cmd))
+          (println parsed-rx-irc-cmd)
           (if (starts-with-module-prompt? final-arg module-prompt)
             (let 
               [
